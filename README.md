@@ -25,11 +25,13 @@
 
 1. 获取ROOT源码  
 `git clone https://github.com/root-project/root.git` 
-2. 执行源码分析脚本  
+2. 安装Python的依赖  
+`pip install -r dependencies.txt`
+3. 执行源码分析脚本  
 `python root_analysis.py /path-to-root/`  
 其中/path-to-root/代表root源码的路径
-3. 执行产生格式化数据的脚本  
+4. 执行产生格式化数据的脚本  
 `python root_qa_generator.py`
-4. 进入train文件夹，执行训练和测试（需要Qwen2.0-7b模型），且需要在脚本qwen_finetune_tool.py中指定模型的位置  
-- 训练：`python qwen_finetune_tool.py --train --qa_data root_qa_pairs.json --epochs 5 --batch_size 2 --grad_accum_steps 4`
-- 测试：`python qwen_finetune_tool.py --test --adapter_path ./output/adapter --test_data test_qa_pairs.json`
+5. 进入train文件夹，执行训练和测试（需要Qwen2.0-7b模型），且需要在脚本qwen_finetune_tool.py中指定模型的位置  
+    - 训练：`python qwen_finetune_tool.py --train --qa_data root_qa_pairs.json --epochs 5 --batch_size 2 --grad_accum_steps 4`
+    - 测试：`python qwen_finetune_tool.py --test --adapter_path ./output/adapter --test_data test_qa_pairs.json`
